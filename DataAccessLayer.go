@@ -120,7 +120,7 @@ func PutBankList(stub shim.ChaincodeStubInterface, BankList []string) (bool, err
 
 func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, error) {
 	var KycDataObj KycData
-	var BankList []string
+	//var BankList []string
 	var columns []shim.Column
 	var err error
 
