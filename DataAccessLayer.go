@@ -122,6 +122,7 @@ func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, er
 	var KycDataObj KycData
 	var BankList []string
 	var columns []shim.Column
+	var err error
 
 	col1 := shim.Column{Value: &shim.Column_String_{String_: UserId}}
 	columns = append(columns, col1)
@@ -140,7 +141,7 @@ func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, er
 
 	BankList, err = GetBankList(stub)
 	if err != nil {
-		return BankList, errors.New("Failed to get BankList")
+		return false, err
 	}
 
 	if KycDataObj.KYC_BANK_NAME == BankList[0] {
