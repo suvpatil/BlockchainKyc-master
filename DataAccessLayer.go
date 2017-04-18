@@ -118,7 +118,7 @@ func PutBankList(stub shim.ChaincodeStubInterface, BankList []string) (bool, err
 	return true, nil
 }
 
-func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, bool, error) {
+func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, error) {
 	var KycDataObj KycData
 	var BankList []string
 	var columns []shim.Column
@@ -141,7 +141,7 @@ func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, bo
 
 	BankList, err = GetBankList(stub)
 	if err != nil {
-		return false, err
+		return KycDataObj, err
 	}
 
 	if KycDataObj.KYC_BANK_NAME == BankList[0] {
