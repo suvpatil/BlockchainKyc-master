@@ -141,7 +141,7 @@ func GetKYCDetails(stub shim.ChaincodeStubInterface, UserId string) (KycData, er
 
 	BankList, err = GetBankList(stub)
 	if err != nil {
-		return false, err
+		return error, err
 	}
 
 	if KycDataObj.KYC_BANK_NAME == BankList[0] {
